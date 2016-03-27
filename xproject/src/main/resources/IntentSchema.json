@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {
+      "intent": "xProjectIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

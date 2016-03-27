@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>xProject Skill</display-name>
+	
+	<servlet>
+		<description></description>
+		<display-name>XProjectServlet</display-name>
+		<servlet-name>XProjectServlet</servlet-name>
+		<servlet-class>xproject.speech.XProjectServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XProjectServlet</servlet-name>
+		<url-pattern>/xProjectSkill</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>SampleDataServlet</display-name>
+		<servlet-name>SampleDataServlet</servlet-name>
+		<servlet-class>xproject.data.SampleDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SampleDataServlet</servlet-name>
+		<url-pattern>/SampleData</url-pattern>
+	</servlet-mapping>
+
+	<resource-ref>
+		<res-ref-name>jdbc/xProjectDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+	</resource-ref>
+
+	<resource-ref>
+		<res-ref-name>TenantContext</res-ref-name>
+		<res-type>com.sap.cloud.account.TenantContext</res-type>
+	</resource-ref>
+
+	<resource-ref>
+		<res-ref-name>connectivity/DestinationFactory</res-ref-name>
+		<res-type>com.sap.core.connectivity.api.DestinationFactory</res-type>
+	</resource-ref>
+
+</web-app>
