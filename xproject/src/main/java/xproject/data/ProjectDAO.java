@@ -52,4 +52,42 @@ public class ProjectDAO extends AbstractDAO {
 			em.close();
 		}
 	}
+	
+	public void deleteProject(long projectId) {
+		EntityManager em = ProjectDAO.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		try {
+			Project project = em.find(Project.class, projectId);
+			em.remove(project);
+			transaction.commit();
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			em.close();
+		}		
+	}
+	
+	public void changeState(long projectId) {	
+		EntityManager em = ProjectDAO.getEntityManager();
+		Project project = em.find(Project.class, projectId);
+		
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		try {
+			if (project.getStatus().equals("critical")) {
+				project.setStatus("ok");
+			} else {
+				project.setStatus("critical");
+			}
+			em.merge(project);
+			transaction.commit();
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			em.close();
+		}
+	}
 }

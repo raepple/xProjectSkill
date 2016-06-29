@@ -80,6 +80,7 @@ public class XProjectSpeechlet implements Speechlet {
 	private SpeechletResponse getProjectStatusForUser(xproject.oauth.User user) {
 		ProjectDAO projectDAO = new ProjectDAO();
 		List<Project> userProjects = projectDAO.getProjectsForUser(user.getUserid());
+		log.debug("Checking projects for lead with user id " + user.getUserid());
 		String speechText = "";
 		String salutation = "";
 		if (user.getFirstName() != null) {
